@@ -6,7 +6,8 @@ import { MessageStateInterface } from "../types/messageState.interface";
 export const initialState: MessageStateInterface = {
     isLoading: false,
     messages: [],
-    error: null
+    error: null,
+    isSuccess: false
 };
 
 export const reducers = createReducer(
@@ -20,6 +21,19 @@ export const reducers = createReducer(
         messages: action.messages
     })),
     on(MessagesActions.getMessagesFailure, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error
+    })),
+    on(MessagesActions.addMessage, (state) => ({
+        ...state, isLoading: true
+    })),
+    on(MessagesActions.addMessageSuccess, (state, action) => ({
+        ...state,
+        isLoading: false,
+        isSuccess: true
+    })),
+    on(MessagesActions.addMessageFailure, (state, action) => ({
         ...state,
         isLoading: false,
         error: action.error

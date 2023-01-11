@@ -5,13 +5,17 @@ export const selectFeature = (state: AppStateInterface) => state.messages;
 
 export const isLoadingSelector = createSelector(
     selectFeature,
-    (state) => state.isLoading
+    (state) =>  state?.isLoading
 );
 export const messagesSelector = createSelector(
     selectFeature,
-    (state) => state.messages
+    (state) =>  state?.messages 
 );
 export const errorSelector = createSelector(
     selectFeature,
-    (state) => state.error
+    (state) => state?.error
+);
+export const isSuccessSelector = createSelector(
+    selectFeature,
+    (state) =>  state?.isSuccess
 );

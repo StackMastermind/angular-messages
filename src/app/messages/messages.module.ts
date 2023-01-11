@@ -13,9 +13,18 @@ import { MessagesComponent } from './components/messages.component';
 import { FormsModule } from '@angular/forms';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { MessagesService } from './services/messages.service';
+
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+
+
+import { MessagesEffects } from './store/effects';
 
 @NgModule({
   declarations: [MessagesComponent, DialogComponent, MessageListComponent],
+  providers: [MessagesService],
   imports: [
     CommonModule,
     MessagesRoutingModule,
@@ -25,6 +34,8 @@ import { MessageListComponent } from './components/message-list/message-list.com
     MatInputModule,
     MatDialogModule,
     MatTableModule,
+    StoreModule.forFeature('messages', reducers),
+    EffectsModule.forFeature([MessagesEffects]),
   ],
 })
 export class MessagesModule {}

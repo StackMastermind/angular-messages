@@ -12,9 +12,7 @@ import { Observable } from 'rxjs';
 import { MessageInterface } from '../types/message.interface';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MessagesService {
 
   private messagesCollection: CollectionReference<DocumentData>;
