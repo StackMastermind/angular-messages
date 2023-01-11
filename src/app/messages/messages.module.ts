@@ -9,10 +9,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 
 import { MessagesRoutingModule } from './messages-routing.module';
-import { MessagesComponent } from './messages.component';
+import { MessagesComponent } from './components/messages.component';
 import { FormsModule } from '@angular/forms';
-import { DialogComponent } from './dialog/dialog.component';
-import { MessageListComponent } from './message-list/message-list.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MessageListComponent } from './components/message-list/message-list.component';
 
 @NgModule({
   declarations: [MessagesComponent, DialogComponent, MessageListComponent],
