@@ -10,6 +10,8 @@ export class MessageListComponent {
     { id: '234', name: 'dani', message: 'hello world' },
     { id: '234', name: 'dani', message: 'hello world' },
     { id: '234', name: 'dani', message: 'hello world' },
+    { id: '234', name: 'dani', message: 'hello world' },
+    { id: '234', name: 'dani', message: 'hello world' },
   ];
   displayedColumns: Array<string> = ['id', 'name', 'message'];
 }

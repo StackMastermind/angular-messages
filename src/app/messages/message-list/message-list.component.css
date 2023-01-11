@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+.cdk-header-row {
+    background-color: var(--theme-primary-color);
+}
+
+.cdk-header-row th {
+    color: #fff
+}
+
+.cdk-row:hover {
+    background-color: #c2c2c2 !important;
+}
+
+.cdk-row:nth-child(2n) {
+    background-color: #ececec;
+}
