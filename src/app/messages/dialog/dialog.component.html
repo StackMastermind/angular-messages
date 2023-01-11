@@ -1,0 +1,21 @@
+<div class="dialog-wrapper">
+    <button mat-raised-button color="warn" mat-dialog-close class="close-button">X</button>
+    <h1 mat-dialog-title>Hi</h1>
+    <div mat-dialog-content>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="data['name']">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Message</mat-label>
+                <textarea matInput [(ngModel)]="data['message']"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data">Submit</button>
+    </div>
+</div>

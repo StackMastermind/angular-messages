@@ -1,0 +1,9 @@
+.dialog-wrapper {
+    position: relative;
+}
+
+.dialog-wrapper .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

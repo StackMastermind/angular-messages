@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-messages',
@@ -6,7 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent {
+  constructor(private dialog: MatDialog) {}
+
   openDialog() {
-    console.log('opened');
+    const dialogRef = this.dialog.open(DialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) console.log('result is ', result);
+    });
   }
 }
