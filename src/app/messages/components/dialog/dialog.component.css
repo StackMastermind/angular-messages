@@ -2,7 +2,13 @@
     position: relative;
 }
 
-.dialog-wrapper .close-button {
+.dialog-wrapper .mat-mdc-dialog-actions.submit-btn-wrapper {
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.dialog-wrapper .mat-mdc-dialog-actions.close-btn-wrapper {
     position: absolute;
     top: 0;
     right: 0;

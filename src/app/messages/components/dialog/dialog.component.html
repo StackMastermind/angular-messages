@@ -1,5 +1,4 @@
 <div class="dialog-wrapper">
-    <button mat-raised-button color="warn" mat-dialog-close class="close-button">X</button>
     <h1 mat-dialog-title>Hi</h1>
     <div mat-dialog-content>
         <div>
@@ -15,7 +14,10 @@
             </mat-form-field>
         </div>
     </div>
-    <div mat-dialog-actions>
+    <div mat-dialog-actions class="submit-btn-wrapper">
         <button mat-raised-button color="primary" [mat-dialog-close]="data">Submit</button>
+    </div>
+    <div mat-dialog-actions class="close-btn-wrapper">
+        <button mat-raised-button color="warn" mat-dialog-close>X</button>
     </div>
 </div>
