@@ -1,0 +1,8 @@
+.btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-wrapper .table-title {
+    margin-left: 10px;
+}
