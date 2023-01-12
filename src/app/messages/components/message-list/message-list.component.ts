@@ -50,7 +50,6 @@ export class MessageListComponent implements OnInit{
   }
 
   formatDate(timeStamp: Timestamp) {
-    debugger;
     return timeStamp.toDate();
   }
 
