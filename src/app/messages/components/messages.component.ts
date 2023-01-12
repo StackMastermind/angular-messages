@@ -3,12 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessageInterface } from '../types/message.interface';
 import { DialogComponent } from './dialog/dialog.component';
 
-import { Store } from '@ngrx/store';
-import * as MessageActions from '../store/actions';
-import { AppStateInterface } from 'src/app/types/appState.interface';
-
-import { MessagesService } from '../services/messages.service'; 
 import { Timestamp } from '@angular/fire/firestore';
+import { MessagesService } from '../services/messages.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-messages',
@@ -17,15 +14,19 @@ import { Timestamp } from '@angular/fire/firestore';
 })
 export class MessagesComponent {
   constructor(
-    private dialog: MatDialog, 
-    private store: Store<AppStateInterface>,
-    private messageService: MessagesService
-    ) {}
+    private dialog: MatDialog,
+    private messageService: MessagesService,
+    private snackBar: MatSnackBar
+  ) {}
 
   message : MessageInterface = {
     name: "",
     message: "",
     date: Timestamp.now()
+  };
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, { duration: 3000 });
   }
 
   openDialog() {
@@ -37,15 +38,16 @@ export class MessagesComponent {
         this.message.date = Timestamp.now()
 
         const addMessage = this.message;
-
-        this.messageService.addMessage(addMessage)
+        this.messageService
+          .addMessage(addMessage)
           .then((response) => {
             console.log(response);
+            this.openSnackBar('Message submitted successfully :)', 'dismiss');
           })
           .catch((err) => {
             console.log(err);
-          })
-        
+            this.openSnackBar('Message submission failed :(', 'dismiss');
+          });
       }
     });
   }

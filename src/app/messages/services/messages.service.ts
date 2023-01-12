@@ -2,19 +2,17 @@ import {
   CollectionReference,
   DocumentData,
   collection,
-  addDoc
+  addDoc,
 } from '@firebase/firestore';
 
-import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+import { Firestore, collectionData } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { MessageInterface } from '../types/message.interface';
 
-
 @Injectable()
 export class MessagesService {
-
   private messagesCollection: CollectionReference<DocumentData>;
 
   constructor(private readonly firestore: Firestore) {
@@ -30,5 +28,4 @@ export class MessagesService {
   addMessage(message: MessageInterface) {
     return addDoc(this.messagesCollection, message);
   }
-
 }

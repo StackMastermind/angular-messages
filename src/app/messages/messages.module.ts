@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MessagesRoutingModule } from './messages-routing.module';
 import { MessagesComponent } from './components/messages.component';
@@ -37,6 +38,7 @@ import { MessagesEffects } from './store/effects';
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     StoreModule.forFeature('messages', reducers),
     EffectsModule.forFeature([MessagesEffects]),
   ],
