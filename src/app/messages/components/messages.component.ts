@@ -42,11 +42,11 @@ export class MessagesComponent {
           .addMessage(addMessage)
           .then((response) => {
             console.log(response);
-            this.openSnackBar('Message submitted successfully :)', 'dismiss');
+            this.openSnackBar('Message submitted successfully!', 'dismiss');
           })
           .catch((err) => {
             console.log(err);
-            this.openSnackBar('Message submission failed :(', 'dismiss');
+            this.openSnackBar('Message submission failed', 'dismiss');
           });
       }
     });

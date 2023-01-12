@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import { MessageInterface } from '../../types/message.interface';
 
-import {MatSort, Sort} from '@angular/material/sort';
-
 import * as MessageActions from '../../store/actions';
 
 import {
@@ -31,6 +29,7 @@ export class MessageListComponent implements OnInit{
   dataSource: any;
   displayedColumns: Array<string> = ['id', 'name', 'message', 'date'];
 
+
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
@@ -39,7 +38,7 @@ export class MessageListComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(MessageActions.getMessages());
-    this.dataSource = this.messages$.subscribe((messages) => this.initializeDataSource(messages))
+    this.dataSource = this.messages$.subscribe((messages) => this.initializeDataSource(messages));
   }
 
   private initializeDataSource(messages: MessageInterface[]) {
