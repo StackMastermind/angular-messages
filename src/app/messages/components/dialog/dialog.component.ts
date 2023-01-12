@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 type DialogData = {
@@ -14,6 +14,7 @@ type DialogData = {
 export class DialogComponent {
   data: DialogData = { name: '', message: '' };
   errors: { name: boolean; message: boolean } = { name: false, message: false };
+
   constructor(private dialogRef: MatDialogRef<DialogComponent>) {}
 
   submit() {
