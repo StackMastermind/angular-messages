@@ -17,3 +17,8 @@ table {
 .cdk-row:nth-child(2n) {
     background-color: #ececec;
 }
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+}

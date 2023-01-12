@@ -13,3 +13,19 @@
     top: 0;
     right: 0;
 }
+
+
+@media screen and (min-width: 768px) {
+
+    .dialog-wrapper {
+        width: 500px;
+    }
+
+    .dialog-wrapper .mat-mdc-dialog-content {
+        width: 100%;
+    }
+
+    .dialog-wrapper .mat-mdc-dialog-content .mat-mdc-form-field {
+        width: 100%;
+    }
+}
