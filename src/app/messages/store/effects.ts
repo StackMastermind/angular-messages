@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { MessagesService } from "../services/messages.service";
 import * as MessageActions from "./actions";
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { MessageInterface } from "../types/message.interface";
 
 
 @Injectable()
@@ -24,19 +25,5 @@ export class MessagesEffects {
                   );
             })
         )
-    );
-
-    // addMessage$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(MessageActions.addMessage),
-    //         mergeMap(() => {
-    //             return this.messagesService.addMessage().pipe(
-    //                 map((messages) => MessageActions({ messages })),
-    //                 catchError((error) =>
-    //                 of(MessageActions.getMessagesFailure({ error: error.message }))
-    //                 )
-    //             );
-    //         })
-    //     )
-    // ); 
+    ); 
 }

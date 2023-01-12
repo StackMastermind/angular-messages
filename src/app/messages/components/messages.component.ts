@@ -7,13 +7,19 @@ import { Store } from '@ngrx/store';
 import * as MessageActions from '../store/actions';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 
+import { MessagesService } from '../services/messages.service'; 
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent {
-  constructor(private dialog: MatDialog, private store: Store<AppStateInterface>) {}
+  constructor(
+    private dialog: MatDialog, 
+    private store: Store<AppStateInterface>,
+    private messageService: MessagesService
+    ) {}
 
   message : MessageInterface = {
     name: "",
@@ -29,7 +35,14 @@ export class MessagesComponent {
 
         const addMessage = this.message;
 
-        this.store.dispatch(MessageActions.addMessage({ addMessage }));
+        this.messageService.addMessage(addMessage)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+        
       }
     });
   }
