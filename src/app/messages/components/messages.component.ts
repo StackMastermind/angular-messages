@@ -3,11 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessageInterface } from '../types/message.interface';
 import { DialogComponent } from './dialog/dialog.component';
 
-import { Store } from '@ngrx/store';
-import * as MessageActions from '../store/actions';
-import { AppStateInterface } from 'src/app/types/appState.interface';
-
-import { MessagesService } from '../services/messages.service'; 
+import { MessagesService } from '../services/messages.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-messages',
@@ -16,14 +13,18 @@ import { MessagesService } from '../services/messages.service';
 })
 export class MessagesComponent {
   constructor(
-    private dialog: MatDialog, 
-    private store: Store<AppStateInterface>,
-    private messageService: MessagesService
-    ) {}
+    private dialog: MatDialog,
+    private messageService: MessagesService,
+    private snackBar: MatSnackBar
+  ) {}
 
-  message : MessageInterface = {
-    name: "",
-    message: ""
+  message: MessageInterface = {
+    name: '',
+    message: '',
+  };
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, { duration: 3000 });
   }
 
   openDialog() {
@@ -32,17 +33,17 @@ export class MessagesComponent {
       if (result) {
         this.message.message = result.message;
         this.message.name = result.name;
-
         const addMessage = this.message;
-
-        this.messageService.addMessage(addMessage)
+        this.messageService
+          .addMessage(addMessage)
           .then((response) => {
             console.log(response);
+            this.openSnackBar('Message submitted successfully :)', 'dismiss');
           })
           .catch((err) => {
             console.log(err);
-          })
-        
+            this.openSnackBar('Message submission failed :(', 'dismiss');
+          });
       }
     });
   }
