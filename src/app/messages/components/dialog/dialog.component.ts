@@ -19,11 +19,13 @@ export class DialogComponent {
 
   submit() {
     let errorObj = { ...this.errors };
-    if (this.data.name) errorObj.name = false;
+    if (this.data.name.trim()) errorObj.name = false;
     else errorObj.name = true;
-    if (this.data.message) errorObj.message = false;
+    if (this.data.message.trim()) errorObj.message = false;
     else errorObj.message = true;
     this.errors = errorObj;
     if (!errorObj.name && !errorObj.message) this.dialogRef.close(this.data);
+    this.data.name = this.data.name.trim();
+    this.data.message = this.data.message.trim();
   }
 }
