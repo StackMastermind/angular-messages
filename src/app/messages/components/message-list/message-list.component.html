@@ -3,7 +3,8 @@
 </div>
 
 <ng-template #showDataTable>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
+        matSort>
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -25,6 +26,11 @@
             <th mat-header-cell *matHeaderCellDef>Message</th>
             <td mat-cell *matCellDef="let element"> {{element.message | slice:0:100}}<span
                     *ngIf="element.message.length>100">...</span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element"> {{ formatDate(element.date)  | date: 'dd/MM/YYYY'}}</td>
         </ng-container>
 
 

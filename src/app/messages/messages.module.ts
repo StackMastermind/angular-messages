@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MessagesRoutingModule } from './messages-routing.module';
@@ -34,6 +35,7 @@ import { MessagesEffects } from './store/effects';
     MatInputModule,
     MatDialogModule,
     MatTableModule,
+    MatSortModule,
     MatProgressSpinnerModule,
     StoreModule.forFeature('messages', reducers),
     EffectsModule.forFeature([MessagesEffects]),

@@ -8,6 +8,7 @@ import * as MessageActions from '../store/actions';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 
 import { MessagesService } from '../services/messages.service'; 
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-messages',
@@ -23,7 +24,8 @@ export class MessagesComponent {
 
   message : MessageInterface = {
     name: "",
-    message: ""
+    message: "",
+    date: Timestamp.now()
   }
 
   openDialog() {
@@ -32,6 +34,7 @@ export class MessagesComponent {
       if (result) {
         this.message.message = result.message;
         this.message.name = result.name;
+        this.message.date = Timestamp.now()
 
         const addMessage = this.message;
 
